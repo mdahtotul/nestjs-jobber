@@ -6,6 +6,7 @@
   "tags": [],
   "targets": {
     "build": {
+      "dependsOn": ["generate-types", "migrate-prisma"],
       "executor": "nx:run-commands",
       "options": {
         "command": "webpack-cli build",
@@ -59,6 +60,24 @@
         "production": {
           "buildTarget": "jobber-auth:build:production"
         }
+      }
+    },
+    "generate-types": {
+      "command": "prisma generate",
+      "options": {
+        "cwd": "apps/jobber-auth"
+      }
+    },
+    "migrate-prisma": {
+      "command": "prisma migrate dev ",
+      "options": {
+        "cwd": "apps/jobber-auth"
+      }
+    },
+    "reset-prisma": {
+      "command": "prisma migrate reset --force",
+      "options": {
+        "cwd": "apps/jobber-auth"
       }
     },
     "test": {
