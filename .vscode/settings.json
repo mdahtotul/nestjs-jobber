@@ -1,0 +1,28 @@
+{
+  "material-icon-theme.files.customClones": [
+    {
+      "name": "nest-repository",
+      "base": "nest",
+      "color": "#fff",
+      "fileExtensions": ["repository.ts"]
+    },
+    {
+      "name": "nest-strategy",
+      "base": "nest",
+      "color": "#E8D4B7",
+      "fileExtensions": ["strategy.ts"]
+    },
+    {
+      "name": "test-ts integration",
+      "base": "test-ts",
+      "color": "#FF0066",
+      "fileExtensions": ["it.spec.ts"]
+    },
+    {
+      "name": "test-ts e2e",
+      "base": "test-ts",
+      "color": "#00FF9C",
+      "fileExtensions": ["e2e.spec.ts"]
+    }
+  ]
+}
