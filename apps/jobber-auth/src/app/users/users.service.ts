@@ -11,6 +11,10 @@ export class UsersService {
     return await this.prismaService.user.findMany();
   }
 
+  async getUser(args: Prisma.UserWhereUniqueInput) {
+    return await this.prismaService.user.findUniqueOrThrow({ where: args });
+  }
+
   async createUser(data: Prisma.UserCreateInput) {
     return await this.prismaService.user.create({
       data: {

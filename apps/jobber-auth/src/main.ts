@@ -6,6 +6,7 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
+import cookieParser from 'cookie-parser';
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
@@ -14,6 +15,7 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix);
   const port = app.get(ConfigService).getOrThrow<number>('AUTH_PORT');
 
+  app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
 
   await app.listen(port);
