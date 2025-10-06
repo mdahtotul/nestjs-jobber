@@ -1,6 +1,7 @@
 // apps\jobber-auth\src\app\users\users.resolver.ts
 
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { CreateUserInput } from './dto/create-user.input';
 import { User } from './models';
 import { UsersService } from './users.service';
 
@@ -9,7 +10,12 @@ export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
   @Query(() => [User], { name: 'users' })
-  listUsers() {
-    return { users: [] };
+  async listUsers() {
+    return await this.usersService.listUsers();
+  }
+
+  @Mutation(() => User)
+  async createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
+    return await this.usersService.createUser(createUserInput);
   }
 }
